@@ -13,7 +13,8 @@
   <a-assets>
     <a-asset-item id="Bureau" src="Desk.glb"></a-asset-item>
     <a-asset-item id="Moniteur" src="Monitor.glb"></a-asset-item>
-    <a-asset-item id="Tour" src="Gaming Computer.glb"></a-asset-item>
+    <a-asset-item id="Gpu" src="Graphics card.glb"></a-asset-item>
+    <a-asset-item id="Ram" src="RAM.glb"></a-asset-item>
   </a-assets>
 
   <a-entity camera 
@@ -31,13 +32,32 @@
   <a-entity gltf-model="#Moniteur" 
             position="0 0.43 -2" 
             rotation="0 0 0"
-            scale="1 1 1">
+            scale="1.3 1.3 1.3">
   </a-entity>
 
-  <a-entity gltf-model="#Tour" 
-            position="0.6 0.63 -2" 
-            rotation="0 90 0"
-            scale="0.18 0.18 0.18">
+ <a-entity id="tour-pc" position="0.6 0.68 -2">
+    
+    <a-box width="0.25" height="0.5" depth="0.5" color="#111" opacity="0.7">
+        <a-box position="0.126 0.004 0" width="0.01" height="0.48" depth="0.48" color="#88CCFF" opacity="0.3"></a-box>
+    </a-box>
+
+    <a-entity id="gpu-component" 
+              gltf-model="#Gpu" 
+              position="0 0 0" 
+              rotation="0 90 0"
+              scale="0.05 0.05 0.05"
+              animation__extraire="property: position; to: 0.5 0.2 0.5; dur: 1200; startEvents: click">
+    </a-entity>
+
+    <a-entity id="ram-component" 
+              gltf-model="#Ram" 
+              position="-0.05 0.15 0" 
+              rotation="0 90 0"
+              scale="0.05 0.05 0.05"
+              animation__extraire="property: position; to: -0.5 0.4 0.5; dur: 1000; startEvents: click">
+    </a-entity>
+    
+
   </a-entity>
 
   <a-entity id="room">
