@@ -20,6 +20,8 @@
     <a-asset-item id="Canape" src="Couch Medium.glb"></a-asset-item>
     <a-asset-item id="table" src="Coffee Table.glb"></a-asset-item>
     <a-asset-item id="Tv" src="Tv.glb"></a-asset-item>
+    <a-asset-item id="clavier" src="Keyboard.glb"></a-asset-item>
+    <a-asset-item id="souris" src="Computer mouse.glb"></a-asset-item>
 
 
     <img id="windows" src="https://i.imgur.com/w9BNo86.png">
@@ -35,6 +37,8 @@
   <a-entity id="Moniteur-Entity" gltf-model="#Moniteur" position="0 0.86 -4" scale="2.5 2.5 2.5">
       <a-plane id="ecran-pc" position="0 0.22 0.05" width="0.5" height="0.3" src="#windows" visible="false"></a-plane>
   </a-entity>
+  <a-entity gltf-model="#clavier" position="0 0.88 -3.65" rotation="0 180 0" scale="0.0015 0.0015 0.0015"></a-entity>
+    <a-entity gltf-model="#souris" position="0.5 0.88 -3.6" rotation="0 180 0" scale="0.04 0.04 0.04"></a-entity>
   <a-entity gltf-model="#Chaise" position="0 0 -3" rotation="0 180 0" scale="1.3 1.3 1.3"></a-entity>
 
   <a-entity id="tour-pc" position="1 1.2 -4">
