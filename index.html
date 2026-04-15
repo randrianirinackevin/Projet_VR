@@ -21,44 +21,46 @@
     <a-asset-item id="table" src="Coffee Table.glb"></a-asset-item>
     <a-asset-item id="Tv" src="Tv.glb"></a-asset-item>
 
+    <a-image id="logo" src="ipssi-logo-2025.png"></a-image>
+
 
   </a-assets>
 
   <a-entity camera 
             look-controls 
-            wasd-controls="acceleration: 20; fly: true" 
-            position="0 0.85 0">
+            wasd-controls="acceleration: 20" 
+            position="0 1.6 0">
   </a-entity>
 
   <a-entity gltf-model="#Bureau" 
             position="0 0 -4" 
             rotation="0 0 0"
-            scale="1 1 1">
+            scale="2 2 2">
   </a-entity>
 
   <a-entity gltf-model="#Moniteur" 
-            position="0 0.43 -4" 
+            position="0 0.86 -4" 
             rotation="0 0 0"
-            scale="1.3 1.3 1.3">
+            scale="2.5 2.5 2.5">
   </a-entity>
 
- <a-entity id="tour-pc" position="0.6 0.68 -4">
+ <a-entity id="tour-pc" position="1 1.2 -4">
     
-    <a-box width="0.25" height="0.5" depth="0.5" color="#111" opacity="0.7">
-        <a-box position="0.126 0.004 0" width="0.01" height="0.48" depth="0.48" color="#88CCFF" opacity="0.3"></a-box>
+    <a-box width="0.5" height="0.75" depth="0.75" color="#111" opacity="0.7">
+        <a-box position="0.25 0 0" width="0.01" height="0.75" depth="0.75" color="#88CCFF" opacity="0.3"></a-box>
     </a-box>
 
     <a-entity gltf-model="#Gpu" 
               position="0 0 0" 
               rotation="0 90 0"
-              scale="0.05 0.05 0.05"
+              scale="0.07 0.07 0.07"
               animation__extraire="property: position; to: 0.5 0.2 0.5; dur: 1200; startEvents: click">
     </a-entity>
 
     <a-entity gltf-model="#Ram" 
               position="-0.05 0.15 0" 
               rotation="0 90 0"
-              scale="0.05 0.05 0.05"
+              scale="0.07 0.07 0.07"
               animation__extraire="property: position; to: -0.5 0.4 0.5; dur: 1000; startEvents: click">
     </a-entity>
     
@@ -66,20 +68,20 @@
   </a-entity>
 
     <a-entity gltf-model="#Chaise" 
-                position="0 0 -3.5" 
+                position="0 0 -3" 
                 rotation="0 180 0"
-                scale="0.7 0.7 0.7">
+                scale="1.3 1.3 1.3">
     </a-entity>
 
     <a-cylinder id="cable-alim" 
-            position="0.5 0.52 -4.60" 
+            position="1 0.9 -4.60" 
             rotation="70 0 0" 
             radius="0.01" 
             height="0.8" 
             color="#111">
 </a-cylinder>
 s
-<a-box position="0.5 0.4 -4.95" 
+<a-box position="1 0.78 -4.95" 
        width="0.05" height="0.05" depth="0.08" 
        color="#222">
 </a-box>
@@ -87,48 +89,55 @@ s
 <a-entity gltf-model="#panier" 
             position="4.5 0 -3" 
             rotation="0 180 0"
+            scale="0.7 0.7 0.7">
+    </a-entity>
+
+<a-entity gltf-model="#Canape" 
+            position="-4.2 0 1.5" 
+            rotation="0 90 0"
             scale="0.5 0.5 0.5">
     </a-entity>
 
 <a-entity gltf-model="#Canape" 
-            position="-4.5 0 0" 
-            rotation="0 90 0"
-            scale="0.25 0.25 0.25">
-    </a-entity>
-
-<a-entity gltf-model="#Canape" 
-            position="-2 0 0" 
+            position="-1 0 1.5" 
             rotation="0 270 0"
-            scale="0.25 0.25 0.25">
+            scale="0.5 0.5 0.5">
     </a-entity>    
 
 <a-entity gltf-model="#table" 
-            position="-3.2 0 0" 
+            position="-2.5 0 1.5" 
             rotation="0 90 0"
-            scale="1 1 1">
+            scale="2 2 2">
     </a-entity>
 
 <a-entity gltf-model="#Tv" 
-            position="0.3 1.8 -5" 
+            position="0.5 2.5 -5" 
             rotation="0 180 0"
-            scale="0.8 0.8 0.8">
+            scale="1 1 1">
+
+            <a-plane src="#logo"
+             position="0 0 -0.05" 
+              rotation="0 180 0"
+             width="2.15" 
+             height="1.15" 
+             material="shader:flat; side: double"></a-plane>
     </a-entity>
 
   <a-entity id="room">
-  <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#C2B280"></a-plane>
+  <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#4682B4"></a-plane>
   
-  <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#C2B280"></a-plane>
+  <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#4682B4"></a-plane>
 
-  <a-plane position="0 2 -5" rotation="0 0 0" width="10" height="4" color="#C2B280"></a-plane>
+  <a-plane position="0 2 -5" rotation="0 0 0" width="10" height="4" color="#4682B4"></a-plane>
   
-  <a-plane position="0 2 5" rotation="0 180 0" width="10" height="4" color="#C2B280"></a-plane>
+  <a-plane position="0 2 5" rotation="0 180 0" width="10" height="4" color="#4682B4"></a-plane>
   
-  <a-plane position="-5 2 0" rotation="0 90 0" width="10" height="4" color="#C2B280"></a-plane>
+ <a-plane position="-5 2 0" rotation="0 90 0" width="10" height="4" color="#4682B4"></a-plane>
   
-  <a-plane position="5 2 0" rotation="0 -90 0" width="10" height="4" color="#C2B280"></a-plane>
+  <a-plane position="5 2 0" rotation="0 -90 0" width="10" height="4" color="#4682B4"></a-plane>
 </a-entity>
 
-<a-entity id="prise-secteur" position="0.5 0.4 -4.98">
+<a-entity id="prise-secteur" position="1 0.78 -4.98">
     <a-box width="0.12" height="0.12" depth="0.02" color="#FFFFFF"></a-box>
     
     <a-cylinder rotation="90 0 0" position="0 0 0.01" radius="0.04" height="0.01" color="#F0F0F0"></a-cylinder>
