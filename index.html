@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+    <script src="interactions.js"></script>
+    <script src="main-logic.js"></script>
+  </head>
+  <body>
+    <a-scene pc-logic>
+      <a-assets>
+        <a-asset-item id="Bureau" src="Desk.glb"></a-asset-item>
+        <a-asset-item id="souris" src="Computer mouse.glb"></a-asset-item>
+        <a-asset-item id="clavier" src="Keyboard.glb"></a-asset-item>"
+        <a-asset-item id="Moniteur" src="Monitor.glb"></a-asset-item>
+        <a-asset-item id="Gpu" src="Graphics card.glb"></a-asset-item>
+        <a-asset-item id="Ram" src="RAM.glb"></a-asset-item>
+        <a-asset-item id="Chaise" src="Office Chair.glb"></a-asset-item>
+        <a-asset-item id="panier" src="Dog Bed.glb"></a-asset-item>
+        <a-asset-item id="Canape" src="Couch Medium.glb"></a-asset-item>
+        <a-asset-item id="table" src="Coffee Table.glb"></a-asset-item>
+        <a-asset-item id="collision" src="Collision.glb"></a-asset-item>
+        <a-asset-item id="Tv" src="Tv.glb"></a-asset-item>
+        <a-image id="logo" src="ipssi-logo-2025.png"></a-image>
+        <a-image id="background-screen" src="windows.jpg"></a-image>
+        <a-image id="sol" src="granite_tile_diff_2k.jpg"></a-image>
+        <a-image id="mur" src="old_planks_02_diff_8k.jpg"></a-image>
+        <a-image id="plafond" src="4K_false_ceiling_ambientocclusion.png"></a-image>
+      </a-assets>
+
+      <a-entity
+        id="rig"
+        movement-controls="constrainToNavMesh: true; navMesh: [nav-mesh]; speed: 0.15"
+        position="-2 0 4"
+      >
+        <a-entity camera look-controls position="0 1.6 0">
+          <a-cursor 
+            color="lightblue" 
+            scale="0.01 0.01 0.01"
+            position="0 0 -0.02"
+          ></a-cursor>
+          <a-text
+            id="hud-texte"
+            value=""
+            position="0 -0.15 -0.4"
+            scale="0.12 0.12 0.12"
+            align="center"
+            color="yellow"
+            visible="false"
+          ></a-text>
+        </a-entity>
+      </a-entity>
+
+      <a-entity
+        gltf-model="#Bureau"
+        position="0 0 -4"
+        rotation="0 0 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#souris"
+        position="0.75 0.9 -3.7"
+        rotation="0 180 0"
+        scale="0.04 0.04 0.04"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#clavier"
+        position="0.1 0.9 -3.7"
+        rotation="0 0 0"
+        scale="0.002 0.002 0.002"
+      ></a-entity>
+
+      <a-entity
+        id="Moniteur-Entity"
+        gltf-model="#Moniteur"
+        position="0.2 0.86 -4.2"
+        rotation="0 0 0"
+        scale="2.5 2.5 2.5"
+      >
+        <a-image
+          src="#background-screen"
+          id="ecran-pc"
+          position="0 0.18 0.01"
+          width="0.43"
+          height="0.2"
+          visible="false"
+        ></a-image>
+      </a-entity>
+
+      <a-entity
+        gltf-model="#Chaise"
+        position="0 0 -3"
+        rotation="0 180 0"
+        scale="1.3 1.3 1.3"
+      ></a-entity>
+
+      <a-entity id="tour-pc" position="1.3 1.2 -4">
+        <a-box
+          width="0.5"
+          height="0.75"
+          depth="0.75"
+          color="#111"
+          opacity="0.7"
+        ></a-box>
+        <a-box
+          id="vitre"
+          class="raycastable"
+          interactif="type: vitre"
+          position="0.25 0 0"
+          width="0.01"
+          height="0.75"
+          depth="0.75"
+          color="#88CCFF"
+          opacity="0.3"
+        ></a-box>
+
+        <a-entity
+          gltf-model="#Gpu"
+          position="0 0 0"
+          rotation="0 90 0"
+          scale="0.07 0.07 0.07"
+        >
+        </a-entity>
+
+        <a-entity
+          id="ram"
+          class="raycastable"
+          interactif="type: ram"
+          gltf-model="#Ram"
+          position="-0.05 0.15 0"
+          rotation="0 90 0"
+          scale="0.07 0.07 0.07"
+        >
+        </a-entity>
+
+        <a-sphere
+          id="power-btn"
+          class="raycastable"
+          interactif="type: power"
+          position="0 0.15 0.26"
+          radius="0.03"
+          color="red"
+        ></a-sphere>
+      </a-entity>
+
+      <!-- Prise secteur : alignée avec la tour PC (x=1), y=0.78, mur du fond z=-4.98 -->
+      <a-entity id="prise-secteur" position="1.3 0.78 -4.98">
+        <a-box width="0.12" height="0.12" depth="0.02" color="#FFFFFF"></a-box>
+        <a-cylinder
+          rotation="90 0 0"
+          position="0 0 0.01"
+          radius="0.04"
+          height="0.01"
+          color="#F0F0F0"
+        ></a-cylinder>
+        <a-cylinder
+          rotation="90 0 0"
+          position="-0.015 0 0.015"
+          radius="0.005"
+          height="0.01"
+          color="#111"
+        ></a-cylinder>
+        <a-cylinder
+          rotation="90 0 0"
+          position="0.015 0 0.015"
+          radius="0.005"
+          height="0.01"
+          color="#111"
+        ></a-cylinder>
+      </a-entity>
+
+      <a-cylinder
+        id="cable-alim"
+        class="raycastable"
+        interactif="type: cable"
+        position="1.3 0.01 -4.68"
+        rotation="90 0 0"
+        radius="0.015"
+        height="0.63"
+        color="#111"
+      >
+      </a-cylinder>
+
+      <a-entity
+        gltf-model="#panier"
+        position="4.5 0 -3"
+        rotation="0 180 0"
+        scale="0.7 0.7 0.7"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#Canape"
+        position="-4.2 0 1.5"
+        rotation="0 90 0"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#Canape"
+        position="-1 0 1.5"
+        rotation="0 270 0"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#table"
+        position="-2.5 0 1.5"
+        rotation="0 90 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#Tv"
+        position="0.5 2.5 -5"
+        rotation="0 180 0"
+        scale="1 1 1"
+      >
+        <a-plane
+          src="#logo"
+          position="0 0 -0.05"
+          rotation="0 180 0"
+          width="2.15"
+          height="1.15"
+          material="shader:flat; side: double"
+        ></a-plane>
+      </a-entity>
+
+      <a-entity id="room">
+        <a-plane
+          position="0 0 0"
+          rotation="-90 0 0"
+          width="10"
+          height="10"
+          material="src: #sol; repeat: 6 6" 
+        ></a-plane>
+        <a-plane
+          position="0 4 0"
+          rotation="90 0 0"
+          width="10"
+          height="10"
+          material="src: #plafond; repeat: 7 7"
+        ></a-plane>
+        <a-plane
+          position="0 2 -5"
+          rotation="0 0 0"
+          width="10"
+          height="4"
+          material="src: #mur; repeat: 5 2"
+        ></a-plane>
+        <a-plane
+          position="0 2 5"
+          rotation="0 180 0"
+          width="10"
+          height="4"
+          material="src: #mur; repeat: 5 2"
+        ></a-plane>
+        <a-plane
+          position="-5 2 0"
+          rotation="0 90 0"
+          width="10"
+          height="4"
+          material="src: #mur; repeat: 5 2"
+        ></a-plane>
+        <a-plane
+          position="5 2 0"
+          rotation="0 -90 0"
+          width="10"
+          height="4"
+          material="src: #mur; repeat: 5 2"
+        ></a-plane>
+      </a-entity>
+
+      <a-entity
+        gltf-model="#collision"
+        nav-mesh
+        position="0 0.01 0.05"
+        visible="false"
+        rotation="0 0 0"
+        scale="49.8 49.8 49.6"
+      ></a-entity>
+
+      <a-entity light="type: ambient; color: #BBB; intensity: 1.2"></a-entity>
+      <a-entity
+        light="type: directional; color: #FFF; intensity: 0.6"
+        position="-1 3 2"
+      ></a-entity>
+      <a-entity
+        light="type: point; intensity: 0.5; distance: 3; color: #FFF"
+        position="0.6 1 -1.5"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
