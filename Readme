@@ -1,7 +1,73 @@
-Tintin et la compagnie   a-frame
+# Tintin & Co — Projet A-Frame
 
+Projet de simulation 3D interactif, conçu pour former les techniciens de demain.
+Réalisé avec **A-Frame**, une librairie web de réalité virtuelle qui tourne directement dans le navigateur, sans installation.
 
-Tanguy
-Matthieu
-Ilyass
-Ckevin
+---
+
+##  Objectif
+
+Plonger l'utilisateur dans un environnement 3D où il doit assembler et allumer un PC en suivant les bonnes étapes dans le bon ordre :
+
+1. Brancher le câble d'alimentation
+2. Vérifier que la RAM est bien en place
+3. Fermer le boîtier
+4. Appuyer sur le bouton d'alimentation
+
+---
+
+##  Lancer le projet
+
+Ouvre un terminal dans le dossier `Projet_AR`, puis tape :
+
+```
+python -m http.server 5501
+```
+
+Ouvre ensuite ton navigateur et va sur :
+
+```
+http://localhost:5501
+```
+
+Bonne simulation !
+
+---
+
+##  Contrôles
+
+| Action | Touche |
+|---|---|
+| Se déplacer | Z Q S D |
+| Regarder autour | Souris |
+| Interagir avec un objet | Pointer + **E** |
+
+Un texte jaune apparaît en bas de l'écran quand tu pointes un objet interactif pour t'indiquer quoi faire.
+
+---
+
+##  Structure du projet
+
+```
+Projet_AR/
+├── index.html          → fichier principal, construit la scène 3D
+├── assets/             → modèles 3D .glb
+├── images/             → textures (sol, mur, plafond, logo, écran)
+└── js/
+    ├── interactions.js → gère les actions du joueur
+    └── main-logic.js   
+```
+
+---
+
+##  Modèles 3D
+
+Tous les fichiers `.glb` sont des objets 3D utilisés dans la simulation. Vous pouvez les retrouver et en télécharger d'autres sur :
+
+ [https://poly.pizza/](https://poly.pizza/)
+
+---
+
+##  Équipe
+
+Projet réalisé par **Tanguy**, **Matthieu**, **Ilyass** et **Ckevin** — IPSSI 2025
